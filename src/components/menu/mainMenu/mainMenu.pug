@@ -1,0 +1,24 @@
+-
+    mainMenu = {
+        disabled: false,
+        list: [
+            {
+                id: "main__menu__start",
+                title: "start"
+            },
+            {
+                id: "main__menu__practice",
+                title: "practice"
+            },
+            {
+                id: "main__menu__records",
+                title: "records"
+            }
+        ]
+    }
+
+.menu(class = mainMenu.disabled && 'disabled' id="main__menu")
+    ul.menu__list
+        each item in mainMenu.list
+            li
+                button(id = item.id)= item.title

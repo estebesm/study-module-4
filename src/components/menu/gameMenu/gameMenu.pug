@@ -1,0 +1,20 @@
+-
+    gameMenu = {
+        disabled: false,
+        list: [
+            {
+                id: "game__menu__start",
+                title: "start"
+            },
+            {
+                id: "game__menu__practice",
+                title: "practice"
+            }
+        ]
+    }
+
+.menu(class = gameMenu.disabled && 'disabled' id="game__menu")
+    ul.menu__list
+        each item in gameMenu.list
+            li
+                button#item.id= item.title

@@ -1,0 +1,51 @@
+.signIn{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .3);
+  &.active{
+    display: block;
+    .container{
+      width: 100%;
+      min-height: 100vh;
+      .content{
+        max-width: 600px;
+        width: 100%;
+        min-width: 300px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 40px 50px;
+        border-radius: 12px;
+        margin: 0 auto;
+        h1{
+          padding: 0 0 20px;
+          color: #9c27b0;
+        }
+        input{
+          width: 100%;
+          padding: 20px;
+          border-radius: 10px;
+          font-size: 36px;
+          &.error{
+            border: 1px solid #ff1744;
+            outline: 2px solid #ff1744;
+          }
+        }
+        button{
+          margin-top: 20px;
+          width: 100%;
+          padding: 20px 40px;
+          border-radius: 10px;
+          font-size: 32px;
+          background-color: #3d5afe;
+          color: white;
+        }
+      }
+    }
+  }
+}

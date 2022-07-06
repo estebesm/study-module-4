@@ -1,0 +1,17 @@
+.attack#attack-page
+    .container
+        include ../../components/auth/auth
+        include ../../components/modal/signIn/signIn
+        .task#attack__task
+            #attack__first-number.item
+            #attack__operator.item
+            #attack__second-number.item
+            #attack__equals.item
+            input(type="number" value="" id="attack__input")
+
+        button(type='button' id="attack__answer-button" class="answer-button") ANSWER
+
+        .result
+            .score#attack__score score: 0
+            .correct-answer#attack__correct-answer +1
+            .wrong-answer#attack__wrong-answer -1

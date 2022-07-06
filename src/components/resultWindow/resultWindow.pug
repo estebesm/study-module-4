@@ -1,0 +1,34 @@
+-
+    const SCORE_ID = 'result-window__score'
+    const CORRECT_ANSWERS_ID = 'result-window__correct-answers'
+    const WRONG_ANSWER_ID = 'result-window__wrong-answers'
+    result = [
+        {
+            id: SCORE_ID,
+            text: 'your score:',
+            value: 0
+        },
+        {
+            id: CORRECT_ANSWERS_ID,
+            text: 'correct answers:',
+            value: 0
+        },
+        {
+            id: WRONG_ANSWER_ID,
+            text: 'wrong answers:',
+            value: 0
+        }
+    ]
+
+mixin resultWindow(page)
+    .resultWindow#result-window
+        .container
+            .resultWindow__content#result-window__content
+                .resultWindow__result
+                    each item in result
+                        div.resultWindow__item
+                            p.resultWindow__item__text=item.text
+                            p.resultWindow__item__value(id=`${page}__${item.id}`)=item.value
+                button(type='button' id=`${page}__result-window__try-again`) try again
+                button(type='button' id=`${page}__result-window__records`) records
+                button(type='button' id=`${page}__result-window__menu`) menu

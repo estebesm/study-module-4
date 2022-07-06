@@ -1,0 +1,137 @@
+.practice{
+  display: none;
+  background-color: #9c27b0;
+  min-height: 100vh;
+  .container{
+    .task{
+      display: flex;
+      justify-content: center;
+      padding-top: 100px;
+      font-size: 80px;
+      color: white;
+      font-weight: 700;
+      &.remove{
+        animation: .25s remove-task linear;
+      }
+      &.create{
+        animation: .25s create-task linear;
+      }
+      .item{
+        margin: 0 20px;
+      }
+      input{
+        font-size: 70px;
+        max-width: 150px;
+        padding: 0 30px;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+    }
+    .answer-button{
+      display: block;
+      padding: 30px;
+      font-size: 60px;
+      color: white;
+      background-color: #3d5afe;
+      font-weight: 700;
+      border-radius: 20px;
+      margin: 50px auto;
+    }
+    .result{
+      position: relative;
+      margin: 200px auto 0;
+      font-size: 24px;
+      color: white;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      .score{
+        &.wrong{
+          animation: .5s wrong-score linear;
+        }
+      }
+      .correct-answer, .wrong-answer{
+        opacity: 0;
+        margin-left: 20px;
+        color: #76ff03;
+      }
+      .wrong-answer{
+        color: #ff1744;
+        position: relative;
+        right: 50px;
+      }
+      .correct-answer.active{
+        opacity: 1;
+        animation: success-answer .5s linear;
+      }
+      .wrong-answer.active{
+        opacity: 1;
+        animation: wrong-answer .5s linear;
+      }
+    }
+  }
+}
+
+@keyframes success-answer {
+  0%{
+    //display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes wrong-answer {
+  0%{
+    //display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(50px);
+    opacity: 0;
+  }
+}
+
+@keyframes wrong-score {
+  0%{
+    transform: translateX(3px);
+  }
+  33%{
+    transform: translateX(-3px);
+  }
+  66%{
+    transform: translateX(2px);
+  }
+  100%{
+    transform: translateX(-2px);
+  }
+}
+
+@keyframes remove-task {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+@keyframes create-task {
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
