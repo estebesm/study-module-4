@@ -1,6 +1,6 @@
 import './resultWindow.scss'
-import {closePage, openMainPage, openPracticePage, PRACTICE_PAGE_ID} from "../../entries/index";
-import {resetPracticeScore} from "../../pages/practice/practice";
+import {closePage, openAttackPage, openMainPage, openPracticePage, PRACTICE_PAGE_ID} from "../../entries/index";
+import {mode, resetPracticeScore} from "../../pages/practice/practice";
 
 const resultWindow = document.getElementById('result-window')
 const contentBlock = document.getElementById('result-window__content')
@@ -38,7 +38,8 @@ contentBlock.addEventListener('click', e => {
 practiceTryAgainButton.addEventListener('click', () => {
     closeResultWindow()
     closePage(PRACTICE_PAGE_ID)
-    openPracticePage()
+    if(mode === 'practice') openPracticePage()
+    if(mode === 'attack') openAttackPage()
 })
 practiceMenuButton.addEventListener('click', () => {
     closeResultWindow()

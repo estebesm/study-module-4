@@ -2,6 +2,7 @@
     include ../../components/resultWindow/resultWindow
     +resultWindow('practice')
     .container
+        include ../../components/timer/timer
         include ../../components/stopGameButton/stopGameButton
         +stopGameButton('practice')
         include ../../components/auth/auth
@@ -12,7 +13,6 @@
             #practice__second-number.item
             #practice__equals.item
             input(type="number" value="" id="practice__input")
-            //#practice__answer.item
 
         button(type='button' id="practice__answer-button" class="answer-button") ANSWER
 

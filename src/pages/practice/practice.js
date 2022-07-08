@@ -18,6 +18,12 @@ const wrongAnswerElement = document.getElementById('practice__wrong-answer')
 
 const scoreElement = document.getElementById('practice__score__game')
 
+export let mode = 'practice'
+
+export const setMode = (type) => {
+    mode = type
+}
+
 const renderTask = (question) => {
     firstNumberElement.textContent = question.firstNumber.toString()
     operatorElement.textContent = question.operator
@@ -87,3 +93,12 @@ export function getPracticeScore(){
         wrongAnswers
     }
 }
+
+export function getScore(){
+    return {
+        score,
+        correctAnswers,
+        wrongAnswers
+    }
+}
+

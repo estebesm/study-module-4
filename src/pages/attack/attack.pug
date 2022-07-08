@@ -1,13 +1,18 @@
 .attack#attack-page
+    include ../../components/resultWindow/resultWindow
+    +resultWindow('attack')
     .container
-        include ../../components/auth/auth
-        include ../../components/modal/signIn/signIn
+        include ../../components/stopGameButton/stopGameButton
+            +stopGameButton('attack')
+            include ../../components/auth/auth
+            +authBlock('attack')
+            include ../../components/modal/signIn/signIn
         .task#attack__task
-            #attack__first-number.item
-            #attack__operator.item
-            #attack__second-number.item
-            #attack__equals.item
-            input(type="number" value="" id="attack__input")
+            .first-number.item
+                .operator.item
+                .second-number.item
+                .equals.item
+                input(type="number" value="" id="attack__input" class="task__input")
 
         button(type='button' id="attack__answer-button" class="answer-button") ANSWER
 
