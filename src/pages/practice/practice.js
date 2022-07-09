@@ -2,6 +2,7 @@ import './practice.scss'
 import '../../components/stopGameButton/stopGameButton'
 import '../../components/resultWindow/resultWindow'
 import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
+import {runTimer} from "../../components/timer/timer";
 
 const practiceTask = document.getElementById('practice__task')
 
@@ -31,29 +32,21 @@ const renderTask = (question) => {
     equalsElement.textContent = '='
 }
 
+let gameStarted = false
 let question = getSimpleQuestion()
 let score = 0
 let correctAnswers = 0
 let wrongAnswers = 0
 
 renderTask(question)
+practiceInput.focus()
 
-answerButton.addEventListener("click", () => {
-    if(practiceInput.value === question.answer.toString()) {
-        addPoint(score)
-    } else {
-        removePoint(score)
+answerButton.addEventListener("click", answerToQuestion)
+practiceInput.addEventListener("keypress", e => {
+    if(e.key === 'Enter'){
+        e.preventDefault()
+        answerButton.click()
     }
-    practiceTask.classList.remove('create')
-    practiceTask.classList.add('remove')
-    setTimeout(() => {
-        practiceTask.classList.remove('remove')
-        practiceTask.classList.add('create')
-    }, 250)
-    practiceInput.value = ''
-    practiceInput.focus()
-    question = getSimpleQuestion()
-    renderTask(question)
 })
 
 
@@ -80,6 +73,7 @@ function removePoint() {
 }
 
 export function resetPracticeScore(){
+    gameStarted = false
     score = 0
     wrongAnswers = 0
     correctAnswers = 0
@@ -102,3 +96,25 @@ export function getScore(){
     }
 }
 
+export function answerToQuestion(){
+    if(!gameStarted){
+        runTimer()
+        gameStarted = true
+    }
+
+    if(practiceInput.value === question.answer.toString()) {
+        addPoint(score)
+    } else {
+        removePoint(score)
+    }
+    practiceTask.classList.remove('create')
+    practiceTask.classList.add('remove')
+    setTimeout(() => {
+        practiceTask.classList.remove('remove')
+        practiceTask.classList.add('create')
+    }, 250)
+    practiceInput.value = ''
+    practiceInput.focus()
+    question = getSimpleQuestion()
+    renderTask(question)
+}

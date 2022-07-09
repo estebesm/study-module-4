@@ -46,7 +46,6 @@ export function getQuestionsNumbers(operator){
     }
 }
 
-
 export function getSimpleQuestion(){
     const operatorIndex = getRandomOperatorIndex()
     const numbers = getQuestionsNumbers(operators[operatorIndex])

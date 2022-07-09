@@ -1,5 +1,6 @@
 import '../../styles/style.scss'
 import './index.scss'
+import '../../components/records/records'
 
 export const MAIN_PAGE_ID = 'main-page'
 export const PRACTICE_PAGE_ID = 'practice-page'
@@ -10,9 +11,11 @@ export let currentPage = MAIN_PAGE_ID
 import '../../pages/main/main'
 import '../../pages/practice/practice'
 import '../../components/auth/auth'
-import {mode, setMode} from "../../pages/practice/practice";
+import {setMode} from "../../pages/practice/practice";
 import {runTimer} from "../../components/timer/timer";
 import {disableAuthButton, enableAuthButton, setAuthButtonContent} from "../../components/auth/auth";
+import {isAuth} from "../../functions/localStorage";
+import {openModal} from "../../components/modal/signIn/signIn";
 
 openMainPage()
 
@@ -37,15 +40,19 @@ export function openPracticePage(){
 }
 
 export function openAttackPage(){
-    pages.forEach(id => {
-        closePage(id)
-    })
-    setMode('attack')
-    disableAuthButton()
-    currentPage = PRACTICE_PAGE_ID
-    setAuthButtonContent(currentPage)
-    openPage(PRACTICE_PAGE_ID)
-    runTimer()
+    if(isAuth()) {
+        pages.forEach(id => {
+            closePage(id)
+        })
+        setMode('attack')
+        disableAuthButton()
+        currentPage = PRACTICE_PAGE_ID
+        setAuthButtonContent(currentPage)
+        openPage(PRACTICE_PAGE_ID)
+    }
+    else {
+        openModal()
+    }
 }
 
 function openPage(id){

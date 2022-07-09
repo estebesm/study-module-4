@@ -1,0 +1,43 @@
+.records{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  background-color: white;
+  z-index: 1;
+  &.active{
+    display: block;
+  }
+  .container{
+    .records__content{
+      .records__close{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        .close-image{
+          width: 24px;
+          height: 24px;
+        }
+      }
+      .records__header{
+
+      }
+      .records__table{
+        list-style-type: none;
+        li{
+          color: black;
+          font-size: 24px;
+          display: flex;
+          .table__item__name{
+
+          }
+          .table__item__value{
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}

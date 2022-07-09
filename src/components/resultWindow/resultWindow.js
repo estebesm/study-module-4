@@ -1,6 +1,7 @@
 import './resultWindow.scss'
 import {closePage, openAttackPage, openMainPage, openPracticePage, PRACTICE_PAGE_ID} from "../../entries/index";
-import {mode, resetPracticeScore} from "../../pages/practice/practice";
+import {getScore, mode, resetPracticeScore} from "../../pages/practice/practice";
+import {getUsername, setUserRecord} from "../../functions/localStorage";
 
 const resultWindow = document.getElementById('result-window')
 const contentBlock = document.getElementById('result-window__content')
@@ -20,6 +21,9 @@ export const openResultWindow = score => {
     scoreElement.textContent = score.score
     correctAnswersElement.textContent = score.correctAnswers
     wrongAnswersElement.textContent = score.wrongAnswers
+    if(mode !== 'practice') {
+        setUserRecord(mode, getUsername(), getScore().score)
+    }
 }
 
 export const closeResultWindow = () => {
