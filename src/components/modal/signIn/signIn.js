@@ -14,12 +14,14 @@ export const closeModal = () => {
     signInWindow.classList.remove('active')
 }
 
-const isInputValidated = () => {
-    return signInInput.value.length !== 0
+function isUserNameValid(username) {
+    const res = /^[a-z0-9\.]+$/.exec(username);
+    return !!res;
 }
 
+
 function renderErrorInput() {
-    if(isInputValidated()){
+    if(isUserNameValid(signInInput.value)){
         signInInput.classList.remove('error')
     } else{
         signInInput.classList.add('error')
@@ -35,7 +37,7 @@ signInContent.addEventListener('click', (e) => {
 
 signInContinueButton.addEventListener('click', () => {
     renderErrorInput()
-    if(isInputValidated()){
+    if(isUserNameValid(signInInput.value)){
         authBlockSignIn(signInInput.value)
         closeModal()
     }else {

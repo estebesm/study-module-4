@@ -25,11 +25,16 @@ export const setMode = (type) => {
     mode = type
 }
 
-const renderTask = (question) => {
+export const renderTask = (question) => {
     firstNumberElement.textContent = question.firstNumber.toString()
     operatorElement.textContent = question.operator
     secondNumberElement.textContent = question.secondNumber.toString()
     equalsElement.textContent = '='
+    practiceInput.value = ''
+}
+
+export function setFirstQuestion(q){
+    question = q
 }
 
 let gameStarted = false
@@ -38,7 +43,6 @@ let score = 0
 let correctAnswers = 0
 let wrongAnswers = 0
 
-renderTask(question)
 practiceInput.focus()
 
 answerButton.addEventListener("click", answerToQuestion)
@@ -51,22 +55,28 @@ practiceInput.addEventListener("keypress", e => {
 
 
 function addPoint() {
-    correctAnswerElement.classList.add('active')
-    setTimeout(() => {
+    function removeElement(){
         correctAnswerElement.classList.remove('active')
-    }, 500)
+        correctAnswerElement.removeEventListener('click', removeElement)
+    }
+    correctAnswerElement.classList.add('active')
+    correctAnswerElement.addEventListener('animationend', removeElement)
     score++
     correctAnswers++
     scoreElement.textContent = `score: ${score}`
 }
 
 function removePoint() {
-    wrongAnswerElement.classList.add('active')
-    scoreElement.classList.add('wrong')
-    setTimeout(() => {
+    function removeElement(){
         wrongAnswerElement.classList.remove('active')
         scoreElement.classList.remove('wrong')
-    }, 500)
+        wrongAnswerElement.removeEventListener('click', removeElement)
+        scoreElement.removeEventListener('click', removeElement)
+    }
+    wrongAnswerElement.classList.add('active')
+    scoreElement.classList.add('wrong')
+    wrongAnswerElement.addEventListener('animationend', removeElement)
+    scoreElement.addEventListener('animationend', removeElement)
     score--
     wrongAnswers++
     scoreElement.textContent = `score: ${score}`
@@ -97,7 +107,12 @@ export function getScore(){
 }
 
 export function answerToQuestion(){
-    if(!gameStarted){
+    function createTask(){
+        practiceTask.classList.remove('remove')
+        practiceTask.classList.add('create')
+        practiceTask.removeEventListener('animationend', createTask)
+    }
+    if(!gameStarted && mode === 'attack'){
         runTimer()
         gameStarted = true
     }
@@ -109,10 +124,7 @@ export function answerToQuestion(){
     }
     practiceTask.classList.remove('create')
     practiceTask.classList.add('remove')
-    setTimeout(() => {
-        practiceTask.classList.remove('remove')
-        practiceTask.classList.add('create')
-    }, 250)
+    practiceTask.addEventListener('animationend', createTask)
     practiceInput.value = ''
     practiceInput.focus()
     question = getSimpleQuestion()

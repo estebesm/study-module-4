@@ -10,6 +10,7 @@
       font-size: 80px;
       color: white;
       font-weight: 700;
+      max-width: 90vw;
       &.remove{
         animation: .25s remove-task linear;
       }

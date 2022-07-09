@@ -7,15 +7,14 @@ export const PRACTICE_PAGE_ID = 'practice-page'
 
 const pages = [MAIN_PAGE_ID, PRACTICE_PAGE_ID]
 export let currentPage = MAIN_PAGE_ID
-
 import '../../pages/main/main'
 import '../../pages/practice/practice'
 import '../../components/auth/auth'
-import {setMode} from "../../pages/practice/practice";
-import {runTimer} from "../../components/timer/timer";
+import {renderTask, setFirstQuestion, setMode} from "../../pages/practice/practice";
 import {disableAuthButton, enableAuthButton, setAuthButtonContent} from "../../components/auth/auth";
 import {isAuth} from "../../functions/localStorage";
 import {openModal} from "../../components/modal/signIn/signIn";
+import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
 
 openMainPage()
 
@@ -29,14 +28,22 @@ export function openMainPage(){
     openPage(MAIN_PAGE_ID)
 }
 export function openPracticePage(){
-    pages.forEach(id => {
-        closePage(id)
-    })
-    setMode('practice')
-    disableAuthButton()
-    currentPage = PRACTICE_PAGE_ID
-    setAuthButtonContent(currentPage)
-    openPage(PRACTICE_PAGE_ID)
+    if(isAuth()) {
+        pages.forEach(id => {
+            closePage(id)
+        })
+        setMode('practice')
+        disableAuthButton()
+        currentPage = PRACTICE_PAGE_ID
+        setAuthButtonContent(currentPage)
+        openPage(PRACTICE_PAGE_ID)
+        const question = getSimpleQuestion()
+        setFirstQuestion(question)
+        renderTask(question)
+    }
+    else {
+        openModal()
+    }
 }
 
 export function openAttackPage(){
@@ -49,6 +56,9 @@ export function openAttackPage(){
         currentPage = PRACTICE_PAGE_ID
         setAuthButtonContent(currentPage)
         openPage(PRACTICE_PAGE_ID)
+        const question = getSimpleQuestion()
+        setFirstQuestion(question)
+        renderTask(question)
     }
     else {
         openModal()

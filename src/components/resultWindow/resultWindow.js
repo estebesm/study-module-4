@@ -1,7 +1,9 @@
 import './resultWindow.scss'
 import {closePage, openAttackPage, openMainPage, openPracticePage, PRACTICE_PAGE_ID} from "../../entries/index";
-import {getScore, mode, resetPracticeScore} from "../../pages/practice/practice";
+import {getScore, mode, renderTask, resetPracticeScore, setFirstQuestion} from "../../pages/practice/practice";
 import {getUsername, setUserRecord} from "../../functions/localStorage";
+import {openRecords} from "../records/records";
+import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
 
 const resultWindow = document.getElementById('result-window')
 const contentBlock = document.getElementById('result-window__content')
@@ -21,9 +23,7 @@ export const openResultWindow = score => {
     scoreElement.textContent = score.score
     correctAnswersElement.textContent = score.correctAnswers
     wrongAnswersElement.textContent = score.wrongAnswers
-    if(mode !== 'practice') {
-        setUserRecord(mode, getUsername(), getScore().score)
-    }
+    setUserRecord(mode, getUsername(), getScore().score)
 }
 
 export const closeResultWindow = () => {
@@ -41,6 +41,9 @@ contentBlock.addEventListener('click', e => {
 
 practiceTryAgainButton.addEventListener('click', () => {
     closeResultWindow()
+    const question = getSimpleQuestion()
+    setFirstQuestion(question)
+    renderTask(question)
     closePage(PRACTICE_PAGE_ID)
     if(mode === 'practice') openPracticePage()
     if(mode === 'attack') openAttackPage()
@@ -48,4 +51,8 @@ practiceTryAgainButton.addEventListener('click', () => {
 practiceMenuButton.addEventListener('click', () => {
     closeResultWindow()
     openMainPage()
+})
+practiceRecordsButton.addEventListener('click', () => {
+    closeResultWindow()
+    openRecords(mode)
 })

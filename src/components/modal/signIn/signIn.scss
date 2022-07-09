@@ -34,6 +34,10 @@
           &.error{
             border: 1px solid #ff1744;
             outline: 2px solid #ff1744;
+            & +span:after{
+              content: 'The username can only contain lowercase Latin letters (a-z) and numbers';
+              color: red;
+            }
           }
         }
         button{

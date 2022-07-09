@@ -7,4 +7,4 @@ const recordsButton = document.getElementById('main__menu__records')
 
 practiceButton.addEventListener('click', openPracticePage)
 startButton.addEventListener('click', openAttackPage)
-recordsButton.addEventListener('click', openRecords)
+recordsButton.addEventListener('click', () => openRecords('attack'))

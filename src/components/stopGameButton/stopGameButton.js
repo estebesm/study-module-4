@@ -1,7 +1,6 @@
 import './stopGameButton.scss'
 import {openResultWindow} from "../resultWindow/resultWindow";
-import {getPracticeScore, getScore, mode} from "../../pages/practice/practice";
-import {getRecordsList, getUsername, setUserRecord} from "../../functions/localStorage";
+import {getPracticeScore} from "../../pages/practice/practice";
 
 const practiceButton = document.getElementById('practice__stop-game-button')
 

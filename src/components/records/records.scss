@@ -22,7 +22,11 @@
         }
       }
       .records__header{
-
+        .records__mode-button{
+          &.selected{
+            color: steelblue;
+          }
+        }
       }
       .records__table{
         list-style-type: none;
