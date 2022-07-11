@@ -521,12 +521,12 @@ button, button:active, button:focus, button:hover {
   stroke-width: 2px;
   stroke: white;
   fill: none;
-  animation: countdown 10s linear forwards;
+  animation: countdown 90s linear forwards;
 }
 
 @keyframes countdown {
   from {
-    stroke-dashoffset: 0px;
+    stroke-dashoffset: 0;
   }
   to {
     stroke-dashoffset: 113px;
