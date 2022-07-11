@@ -6,15 +6,23 @@
 
 body{
   font-family: "Courier New", sans-serif;
-  background-color: #ff1744;
+  background-color: black;
   color: white;
   overflow-y: scroll;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
 }
 button, button:active, button:focus, button:hover{
   background-color: inherit;
   border: 0;
   cursor: pointer;
+}
+button:hover{
+  color: lightgray;
+  transition: .3s;
 }
 
 .disabled{

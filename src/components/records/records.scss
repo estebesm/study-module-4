@@ -5,7 +5,8 @@
   left: 0;
   right: 0;
   min-height: 100vh;
-  background-color: white;
+  background-color: black;
+  color: white;
   z-index: 2;
   &.active{
     display: block;
@@ -18,9 +19,12 @@
         position: absolute;
         top: 20px;
         right: 20px;
+        background-color: white;
+        padding: 5px 5px 2px;
+        border-radius: 50%;
         .close-image{
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
         }
       }
       .records__header{
@@ -28,6 +32,7 @@
           font-size: 30px;
           padding: 10px;
           margin-top: 20px;
+          color: white;
           &.selected{
             color: white;
             background-color: steelblue;
@@ -42,12 +47,17 @@
         padding: 20px;
         height: calc(100% - 100px);
         overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
         li{
-          color: black;
+          color: white;
           font-size: 24px;
           display: flex;
           justify-content: space-between;
-          border-bottom: 1px solid lightgray;
+          border-bottom: 1px dotted lightgray;
+          padding-top: 10px;
           .table__item__name{
 
           }

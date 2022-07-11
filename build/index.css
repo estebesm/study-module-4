@@ -6,16 +6,26 @@
 
 body {
   font-family: "Courier New", sans-serif;
-  background-color: #ff1744;
+  background-color: black;
   color: white;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
 button, button:active, button:focus, button:hover {
   background-color: inherit;
   border: 0;
   cursor: pointer;
+}
+
+button:hover {
+  color: lightgray;
+  transition: .3s;
 }
 
 .disabled {
@@ -64,7 +74,8 @@ button, button:active, button:focus, button:hover {
   left: 0;
   right: 0;
   min-height: 100vh;
-  background-color: white;
+  background-color: black;
+  color: white;
   z-index: 2;
 }
 
@@ -84,17 +95,21 @@ button, button:active, button:focus, button:hover {
   position: absolute;
   top: 20px;
   right: 20px;
+  background-color: white;
+  padding: 5px 5px 2px;
+  border-radius: 50%;
 }
 
 .records .container .records__content .records__close .close-image {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .records .container .records__content .records__header .records__mode-button {
   font-size: 30px;
   padding: 10px;
   margin-top: 20px;
+  color: white;
 }
 
 .records .container .records__content .records__header .records__mode-button.selected {
@@ -112,12 +127,18 @@ button, button:active, button:focus, button:hover {
   overflow-y: scroll;
 }
 
+.records .container .records__content .records__table::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
 .records .container .records__content .records__table li {
-  color: black;
+  color: white;
   font-size: 24px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px dotted lightgray;
+  padding-top: 10px;
 }
 
 .records .container .records__content .records__table li .table__item__value {
@@ -188,7 +209,7 @@ button, button:active, button:focus, button:hover {
 
 .game {
   display: none;
-  background-color: #9c27b0;
+  background-color: black;
   min-height: 100vh;
 }
 
@@ -235,12 +256,12 @@ button, button:active, button:focus, button:hover {
 .game .container .answer-button {
   display: block;
   padding: 30px;
-  font-size: 60px;
+  font-size: 40px;
   color: white;
-  background-color: #3d5afe;
+  background-color: gray;
   font-weight: 700;
   border-radius: 20px;
-  margin: 50px auto;
+  margin: 50px auto 0;
 }
 
 .game .container .result {
@@ -428,7 +449,7 @@ button, button:active, button:focus, button:hover {
 
 .resultWindow .container .resultWindow__content h1 {
   padding: 0 0 20px;
-  color: #9c27b0;
+  color: black;
 }
 
 .resultWindow .container .resultWindow__content .resultWindow__result {
@@ -437,7 +458,7 @@ button, button:active, button:focus, button:hover {
 }
 
 .resultWindow .container .resultWindow__content .resultWindow__result .resultWindow__item {
-  color: #9c27b0;
+  color: black;
   font-size: 24px;
   display: flex;
   justify-content: space-between;
@@ -453,7 +474,7 @@ button, button:active, button:focus, button:hover {
   padding: 10px 0;
   width: 200px;
   border-radius: 10px;
-  background-color: #9c27b0;
+  background-color: black;
   color: white;
   font-size: 18px;
   margin: 10px 0;
@@ -487,7 +508,8 @@ button, button:active, button:focus, button:hover {
 
 .countdown {
   display: none;
-  position: relative;
+  position: absolute;
+  top: 20px;
   padding: 0;
   margin: 0 auto;
   height: 40px;
@@ -590,7 +612,7 @@ button, button:active, button:focus, button:hover {
 
 .signIn.active .container .content h1 {
   padding: 0 0 20px;
-  color: #9c27b0;
+  color: black;
 }
 
 .signIn.active .container .content input {
@@ -601,13 +623,13 @@ button, button:active, button:focus, button:hover {
 }
 
 .signIn.active .container .content input.error {
-  border: 1px solid #ff1744;
-  outline: 2px solid #ff1744;
+  border: 1px solid white;
+  outline: 2px solid white;
 }
 
 .signIn.active .container .content input.error + span:after {
   content: 'The username can only contain lowercase Latin letters (a-z) and numbers';
-  color: red;
+  color: black;
 }
 
 .signIn.active .container .content .continue {
@@ -616,7 +638,7 @@ button, button:active, button:focus, button:hover {
   padding: 20px 40px;
   border-radius: 10px;
   font-size: 32px;
-  background-color: #3d5afe;
+  background-color: gray;
   color: white;
 }
 
