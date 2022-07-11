@@ -490,18 +490,18 @@ function answerToQuestion(){
 
 
 
-const signInWindow = document.getElementById('sign-in__window')
-const signInContent = document.getElementById('sign-in__content')
-const signInInput = document.getElementById('sign-in__input')
-const signInContinueButton = document.getElementById('sign-in__continue-button')
-const closeButton = document.getElementById('sign-in__close')
+const signInWindows = document.querySelectorAll('.signIn')
+const signInContents = document.querySelectorAll('.sign-in__content')
+const signInInputs = document.querySelectorAll('.sign-in__input')
+const signInContinueButtons = document.querySelectorAll('.sign-in__continue-button')
+const closeButtons = document.querySelectorAll('.sign-in__close')
 
 const openModal = () => {
-    signInWindow.classList.add('active')
+    signInWindows.forEach(elem => elem.classList.add('active'))
 }
 
 const closeModal = () => {
-    signInWindow.classList.remove('active')
+    signInWindows.forEach(elem => elem.classList.remove('active'))
 }
 
 function isUserNameValid(username) {
@@ -511,31 +511,35 @@ function isUserNameValid(username) {
 
 
 function renderErrorInput() {
-    if(isUserNameValid(signInInput.value)){
-        signInInput.classList.remove('error')
-    } else{
-        signInInput.classList.add('error')
-    }
+    signInInputs.forEach(input => {
+        if (isUserNameValid(input.value)) {
+            input.classList.remove('error')
+        } else {
+            input.classList.add('error')
+        }
+    })
 }
 
-closeButton.addEventListener('click', closeModal)
+closeButtons.forEach(elem => elem.addEventListener('click', closeModal))
 
-signInWindow.addEventListener('click', () => {
+signInWindows.forEach(elem => elem.addEventListener('click', () => {
     closeModal()
-})
-signInContent.addEventListener('click', (e) => {
+}))
+signInContents.forEach(elem => elem.addEventListener('click', (e) => {
     e.stopPropagation()
-})
+}))
 
-signInContinueButton.addEventListener('click', () => {
+signInContinueButtons.forEach(elem => elem.addEventListener('click', () => {
     renderErrorInput()
-    if(isUserNameValid(signInInput.value)){
-        authBlockSignIn(signInInput.value)
-        closeModal()
-    }else {
-        signInInput.oninput = renderErrorInput
-    }
-})
+    signInInputs.forEach(input => {
+        if (isUserNameValid(input.value)) {
+            authBlockSignIn(input.value)
+            closeModal()
+        } else {
+            input.oninput = renderErrorInput
+        }
+    })
+}))
 
 
 ;// CONCATENATED MODULE: ./src/components/auth/auth.js
