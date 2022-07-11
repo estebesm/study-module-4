@@ -11,7 +11,9 @@
     display: block;
   }
   .container{
+    height: 100vh;
     .records__content{
+      height: 100%;
       .records__close{
         position: absolute;
         top: 20px;
@@ -23,23 +25,51 @@
       }
       .records__header{
         .records__mode-button{
+          font-size: 30px;
+          padding: 10px;
+          margin-top: 20px;
           &.selected{
-            color: steelblue;
+            color: white;
+            background-color: steelblue;
+            border: 1px solid steelblue;
+            border-radius: 12px 12px 0 0;
           }
         }
       }
       .records__table{
         list-style-type: none;
+        border: 1px solid steelblue;
+        padding: 20px;
+        height: calc(100% - 100px);
+        overflow-y: scroll;
         li{
           color: black;
           font-size: 24px;
           display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid lightgray;
+
           .table__item__name{
 
           }
           .table__item__value{
             margin-left: 20px;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .records{
+    .container{
+      padding-top: 50px;
+      .records__content{
+        .records__header{
+        }
+        .records__table{
+          height: calc(100% - 150px);
         }
       }
     }

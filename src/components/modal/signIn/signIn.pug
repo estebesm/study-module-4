@@ -1,7 +1,9 @@
 .signIn#sign-in__window
     .container
         .content#sign-in__content
+            button(type='button' class='close' id='sign-in__close')
+                img(src='../../../assets/images/close.png' alt='x')
             h1 Sign In
             input(placeholder='name' id='sign-in__input' value='')
             span
-            button(type='button' id='sign-in__continue-button') continue
+            button(type='button' id='sign-in__continue-button' class='continue') continue

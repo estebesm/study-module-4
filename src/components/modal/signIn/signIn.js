@@ -5,6 +5,7 @@ const signInWindow = document.getElementById('sign-in__window')
 const signInContent = document.getElementById('sign-in__content')
 const signInInput = document.getElementById('sign-in__input')
 const signInContinueButton = document.getElementById('sign-in__continue-button')
+const closeButton = document.getElementById('sign-in__close')
 
 export const openModal = () => {
     signInWindow.classList.add('active')
@@ -27,6 +28,8 @@ function renderErrorInput() {
         signInInput.classList.add('error')
     }
 }
+
+closeButton.addEventListener('click', closeModal)
 
 signInWindow.addEventListener('click', () => {
     closeModal()

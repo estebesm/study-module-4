@@ -12,6 +12,7 @@
       width: 100%;
       min-height: 100vh;
       .content{
+        position: relative;
         max-width: 600px;
         width: 100%;
         min-width: 300px;
@@ -40,7 +41,7 @@
             }
           }
         }
-        button{
+        .continue{
           margin-top: 20px;
           width: 100%;
           padding: 20px 40px;
@@ -48,6 +49,46 @@
           font-size: 32px;
           background-color: #3d5afe;
           color: white;
+        }
+        .close{
+          img {
+            width: 24px;
+            height: 24px;
+          }
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .signIn{
+    &.active{
+      .container{
+        padding: 0;
+        .content{
+          height: 100vh;
+          border-radius: 0;
+          justify-content: center;
+          .close{
+            right: 20px;
+          }
+          h1{
+            font-size: 36px;
+            padding-bottom: 40px;
+          }
+          input{
+            font-size: 24px;
+            padding: 10px;
+          }
+          .continue{
+            font-size: 24px;
+            padding: 15px;
+          }
         }
       }
     }

@@ -6,6 +6,11 @@ const countdownEl = document.querySelector('.countdown');
 const countdownNumberEl = document.querySelector('.countdown-number');
 let countdown = 10;
 
+export const resetTimer = () => {
+    countdown = 10
+    countdownNumberEl.textContent = countdown
+}
+
 export const runTimer = () => {
     const practiceButton = document.getElementById('game__stop-game-button')
     countdownEl.classList.add('active')

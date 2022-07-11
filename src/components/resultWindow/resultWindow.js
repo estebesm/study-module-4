@@ -4,9 +4,10 @@ import {getScore, mode, renderTask, resetPracticeScore, setFirstQuestion} from "
 import {getUsername, setUserRecord} from "../../functions/localStorage";
 import {openRecords} from "../records/records";
 import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
+import {resetTimer} from "../timer/timer";
 
 const resultWindow = document.getElementById('result-window')
-const contentBlock = document.getElementById('result-window__content')
+//const contentBlock = document.getElementById('result-window__content')
 
 const scoreElement = document.getElementById('game__result-window__score')
 const correctAnswersElement = document.getElementById('game__result-window__correct-answers')
@@ -19,6 +20,7 @@ const gameMenuButton = document.getElementById('game__result-window__menu')
 //const scoreElements = [scoreElement, correctAnswersElement, wrongAnswersElement]
 
 export const openResultWindow = score => {
+    resetTimer()
     resultWindow.classList.add('active')
     scoreElement.textContent = score.score
     correctAnswersElement.textContent = score.correctAnswers
@@ -34,10 +36,13 @@ export const closeResultWindow = () => {
     wrongAnswersElement.textContent = ''
 }
 
-resultWindow.addEventListener('click', closeResultWindow)
-contentBlock.addEventListener('click', e => {
+resultWindow.addEventListener('click', e => {
     e.stopPropagation()
 })
+resultWindow.addEventListener('keypress', e => {
+    e.stopPropagation()
+})
+
 
 gameTryAgainButton.addEventListener('click', () => {
     closeResultWindow()
