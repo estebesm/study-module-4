@@ -3,14 +3,14 @@ import './index.scss'
 import '../../components/records/records'
 
 export const MAIN_PAGE_ID = 'main-page'
-export const PRACTICE_PAGE_ID = 'practice-page'
+export const GAME_PAGE_ID = 'game-page'
 
-const pages = [MAIN_PAGE_ID, PRACTICE_PAGE_ID]
+const pages = [MAIN_PAGE_ID, GAME_PAGE_ID]
 export let currentPage = MAIN_PAGE_ID
 import '../../pages/main/main'
-import '../../pages/practice/practice'
+import '../../pages/game/game'
 import '../../components/auth/auth'
-import {renderTask, setFirstQuestion, setMode} from "../../pages/practice/practice";
+import {renderTask, setFirstQuestion, setMode} from "../../pages/game/game";
 import {disableAuthButton, enableAuthButton, setAuthButtonContent} from "../../components/auth/auth";
 import {isAuth} from "../../functions/localStorage";
 import {openModal} from "../../components/modal/signIn/signIn";
@@ -34,9 +34,9 @@ export function openPracticePage(){
         })
         setMode('practice')
         disableAuthButton()
-        currentPage = PRACTICE_PAGE_ID
+        currentPage = GAME_PAGE_ID
         setAuthButtonContent(currentPage)
-        openPage(PRACTICE_PAGE_ID)
+        openPage(GAME_PAGE_ID)
         const question = getSimpleQuestion()
         setFirstQuestion(question)
         renderTask(question)
@@ -53,9 +53,9 @@ export function openAttackPage(){
         })
         setMode('attack')
         disableAuthButton()
-        currentPage = PRACTICE_PAGE_ID
+        currentPage = GAME_PAGE_ID
         setAuthButtonContent(currentPage)
-        openPage(PRACTICE_PAGE_ID)
+        openPage(GAME_PAGE_ID)
         const question = getSimpleQuestion()
         setFirstQuestion(question)
         renderTask(question)

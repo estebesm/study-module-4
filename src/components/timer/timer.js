@@ -1,13 +1,13 @@
 import './timer.scss'
 import {openResultWindow} from "../resultWindow/resultWindow";
-import {getScore} from "../../pages/practice/practice";
+import {getScore} from "../../pages/game/game";
 
 const countdownEl = document.querySelector('.countdown');
 const countdownNumberEl = document.querySelector('.countdown-number');
 let countdown = 10;
 
 export const runTimer = () => {
-    const practiceButton = document.getElementById('practice__stop-game-button')
+    const practiceButton = document.getElementById('game__stop-game-button')
     countdownEl.classList.add('active')
     countdownNumberEl.textContent = countdown.toString();
     const interval = setInterval(function () {

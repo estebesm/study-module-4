@@ -1,0 +1,24 @@
+.practice#game-page
+    include ../../components/resultWindow/resultWindow
+    +resultWindow('game')
+    .container
+        include ../../components/timer/timer
+        include ../../components/stopGameButton/stopGameButton
+        +stopGameButton('game')
+        include ../../components/auth/auth
+        include ../../components/modal/signIn/signIn
+        .task#game__task
+            #game__first-number.item
+            #game__operator.item
+            #game__second-number.item
+            #game__equals.item
+            input(type="number" value="" id="game__input")
+
+        button(type='button' id="game__answer-button" class="answer-button") ANSWER
+
+        .result
+            .score#game__score__game score: 0
+            .correct-answer#game__correct-answer +1
+            .wrong-answer#game__wrong-answer -1
+
+

@@ -1,6 +1,6 @@
 import './resultWindow.scss'
-import {closePage, openAttackPage, openMainPage, openPracticePage, PRACTICE_PAGE_ID} from "../../entries/index";
-import {getScore, mode, renderTask, resetPracticeScore, setFirstQuestion} from "../../pages/practice/practice";
+import {closePage, openAttackPage, openMainPage, openPracticePage, GAME_PAGE_ID} from "../../entries/index";
+import {getScore, mode, renderTask, resetPracticeScore, setFirstQuestion} from "../../pages/game/game";
 import {getUsername, setUserRecord} from "../../functions/localStorage";
 import {openRecords} from "../records/records";
 import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
@@ -8,13 +8,13 @@ import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
 const resultWindow = document.getElementById('result-window')
 const contentBlock = document.getElementById('result-window__content')
 
-const scoreElement = document.getElementById('practice__result-window__score')
-const correctAnswersElement = document.getElementById('practice__result-window__correct-answers')
-const wrongAnswersElement = document.getElementById('practice__result-window__wrong-answers')
+const scoreElement = document.getElementById('game__result-window__score')
+const correctAnswersElement = document.getElementById('game__result-window__correct-answers')
+const wrongAnswersElement = document.getElementById('game__result-window__wrong-answers')
 
-const practiceTryAgainButton = document.getElementById('practice__result-window__try-again')
-const practiceRecordsButton = document.getElementById('practice__result-window__records')
-const practiceMenuButton = document.getElementById('practice__result-window__menu')
+const gameTryAgainButton = document.getElementById('game__result-window__try-again')
+const gameRecordsButton = document.getElementById('game__result-window__records')
+const gameMenuButton = document.getElementById('game__result-window__menu')
 
 //const scoreElements = [scoreElement, correctAnswersElement, wrongAnswersElement]
 
@@ -39,20 +39,19 @@ contentBlock.addEventListener('click', e => {
     e.stopPropagation()
 })
 
-practiceTryAgainButton.addEventListener('click', () => {
+gameTryAgainButton.addEventListener('click', () => {
     closeResultWindow()
     const question = getSimpleQuestion()
     setFirstQuestion(question)
     renderTask(question)
-    closePage(PRACTICE_PAGE_ID)
-    if(mode === 'practice') openPracticePage()
+    closePage(GAME_PAGE_ID)
+    if(mode === 'game') openPracticePage()
     if(mode === 'attack') openAttackPage()
 })
-practiceMenuButton.addEventListener('click', () => {
+gameMenuButton.addEventListener('click', () => {
     closeResultWindow()
     openMainPage()
 })
-practiceRecordsButton.addEventListener('click', () => {
-    closeResultWindow()
+gameRecordsButton.addEventListener('click', () => {
     openRecords(mode)
 })

@@ -19,7 +19,12 @@ export const closeRecords = () => {
     recordsElement.classList.remove('active')
 }
 
+recordsElement.addEventListener('click', (e) => {
+    e.stopPropagation()
+})
+
 closeElement.addEventListener('click', closeRecords)
+
 practiceButton.addEventListener('click', () => {
     attackButton.classList.remove('selected')
     practiceButton.classList.add('selected')

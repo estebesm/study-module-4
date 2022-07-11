@@ -1,23 +1,23 @@
-import './practice.scss'
+import './game.scss'
 import '../../components/stopGameButton/stopGameButton'
 import '../../components/resultWindow/resultWindow'
 import {getSimpleQuestion} from "../../functions/generateSimpleQuestion";
 import {runTimer} from "../../components/timer/timer";
 
-const practiceTask = document.getElementById('practice__task')
+const gameTask = document.getElementById('game__task')
 
-const firstNumberElement = document.getElementById('practice__first-number')
-const secondNumberElement = document.getElementById('practice__second-number')
-const operatorElement = document.getElementById('practice__operator')
-const equalsElement = document.getElementById('practice__equals')
-const practiceInput = document.getElementById('practice__input')
+const firstNumberElement = document.getElementById('game__first-number')
+const secondNumberElement = document.getElementById('game__second-number')
+const operatorElement = document.getElementById('game__operator')
+const equalsElement = document.getElementById('game__equals')
+const practiceInput = document.getElementById('game__input')
 
-const answerButton = document.getElementById('practice__answer-button')
+const answerButton = document.getElementById('game__answer-button')
 
-const correctAnswerElement = document.getElementById('practice__correct-answer')
-const wrongAnswerElement = document.getElementById('practice__wrong-answer')
+const correctAnswerElement = document.getElementById('game__correct-answer')
+const wrongAnswerElement = document.getElementById('game__wrong-answer')
 
-const scoreElement = document.getElementById('practice__score__game')
+const scoreElement = document.getElementById('game__score__game')
 
 export let mode = 'practice'
 
@@ -108,9 +108,9 @@ export function getScore(){
 
 export function answerToQuestion(){
     function createTask(){
-        practiceTask.classList.remove('remove')
-        practiceTask.classList.add('create')
-        practiceTask.removeEventListener('animationend', createTask)
+        gameTask.classList.remove('remove')
+        gameTask.classList.add('create')
+        gameTask.removeEventListener('animationend', createTask)
     }
     if(!gameStarted && mode === 'attack'){
         runTimer()
@@ -122,9 +122,9 @@ export function answerToQuestion(){
     } else {
         removePoint(score)
     }
-    practiceTask.classList.remove('create')
-    practiceTask.classList.add('remove')
-    practiceTask.addEventListener('animationend', createTask)
+    gameTask.classList.remove('create')
+    gameTask.classList.add('remove')
+    gameTask.addEventListener('animationend', createTask)
     practiceInput.value = ''
     practiceInput.focus()
     question = getSimpleQuestion()

@@ -1,7 +1,7 @@
 import './auth.scss'
 import {openModal} from "../modal/signIn/signIn";
 import {getUsername, isAuth, signIn, signOut} from "../../functions/localStorage";
-import {currentPage, MAIN_PAGE_ID, PRACTICE_PAGE_ID} from "../../entries/index";
+import {currentPage, MAIN_PAGE_ID, GAME_PAGE_ID} from "../../entries/index";
 
 export const authBlockSignIn = (username) => {
     signIn(username)
@@ -30,7 +30,7 @@ export function setAuthButtonContent(currentPage){
             elem.textContent = isAuth() ? getUsername() : 'login'
         })
     }
-    if(currentPage === PRACTICE_PAGE_ID){
+    if(currentPage === GAME_PAGE_ID){
         authButtons.forEach(elem => {
             elem.textContent = isAuth() ? getUsername() : ''
         })
