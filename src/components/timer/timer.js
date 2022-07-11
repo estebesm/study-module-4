@@ -4,10 +4,10 @@ import {getScore} from "../../pages/game/game";
 
 const countdownEl = document.querySelector('.countdown');
 const countdownNumberEl = document.querySelector('.countdown-number');
-let countdown = 10;
+let countdown = 90;
 
 export const resetTimer = () => {
-    countdown = 10
+    countdown = 90
     countdownNumberEl.textContent = countdown
 }
 
@@ -19,7 +19,7 @@ export const runTimer = () => {
         if(countdown<=0){
             disableTimer()
             openResultWindow(getScore())
-            countdown = 10
+            countdown = 90
         }
         else {
             countdown--
