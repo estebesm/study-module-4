@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathQuiz</title>
+  <script defer src="index.js"></script><link href="index.css" rel="stylesheet"></head>
+  <body>
+<div class="records">
+  <div class="container">
+    <div class="records__content">
+      <button class="records__close"><img class="close-image" src="../../../assets/images/close.png"></button>
+      <div class="records__header">
+        <button class="records__mode-button" id="records__practice__button">practice</button>
+        <button class="records__mode-button" id="records__attack__button">attack</button>
+      </div>
+      <ul class="records__table">
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="main" id="main-page">
+  <div class="container">
+<div class="auth">
+  <button class="auth__button" type="button">login</button>
+</div>
+<div class="signIn" id="sign-in__window">
+  <div class="container">
+    <div class="content" id="sign-in__content">
+      <button class="close" type="button" id="sign-in__close"><img src="../../../assets/images/close.png" alt="x"></button>
+      <h1>Sign In</h1>
+      <input placeholder="name" id="sign-in__input" value=""><span></span>
+      <button class="continue" type="button" id="sign-in__continue-button">continue</button>
+    </div>
+  </div>
+</div>
+    <h1 class="title">MathQuiz</h1>
+<div class="menu" id="main__menu">
+  <ul class="menu__list">
+    <li>
+      <button id="main__menu__start">start</button>
+    </li>
+    <li>
+      <button id="main__menu__practice">practice</button>
+    </li>
+    <li>
+      <button id="main__menu__records">records</button>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    <div class="game" id="game-page">
+            <div class="resultWindow" id="result-window">
+              <div class="container">
+                <div class="resultWindow__content" id="result-window__content">
+                  <div class="resultWindow__result">
+                    <div class="resultWindow__item">
+                      <p class="resultWindow__item__text">your score:</p>
+                      <p class="resultWindow__item__value" id="game__result-window__score">0</p>
+                    </div>
+                    <div class="resultWindow__item">
+                      <p class="resultWindow__item__text">correct answers:</p>
+                      <p class="resultWindow__item__value" id="game__result-window__correct-answers">0</p>
+                    </div>
+                    <div class="resultWindow__item">
+                      <p class="resultWindow__item__text">wrong answers:</p>
+                      <p class="resultWindow__item__value" id="game__result-window__wrong-answers">0</p>
+                    </div>
+                  </div>
+                  <button type="button" id="game__result-window__try-again">try again</button>
+                  <button type="button" id="game__result-window__records">records</button>
+                  <button type="button" id="game__result-window__menu">menu</button>
+                </div>
+              </div>
+            </div>
+      <div class="container">
+<div class="countdown">
+  <div class="countdown-number"></div>
+  <svg>
+    <circle r="18" cx="20" cy="20"></circle>
+  </svg>
+</div>
+                <div class="stopGameButton">
+                  <button type="button" id="game__stop-game-button">stop</button>
+                </div>
+<div class="auth">
+  <button class="auth__button" type="button">login</button>
+</div>
+<div class="signIn" id="sign-in__window">
+  <div class="container">
+    <div class="content" id="sign-in__content">
+      <button class="close" type="button" id="sign-in__close"><img src="../../../assets/images/close.png" alt="x"></button>
+      <h1>Sign In</h1>
+      <input placeholder="name" id="sign-in__input" value=""><span></span>
+      <button class="continue" type="button" id="sign-in__continue-button">continue</button>
+    </div>
+  </div>
+</div>
+        <div class="task" id="game__task">
+          <div class="item" id="game__first-number"></div>
+          <div class="item" id="game__operator"></div>
+          <div class="item" id="game__second-number"></div>
+          <div class="item" id="game__equals"></div>
+          <input type="number" value="" id="game__input">
+        </div>
+        <button class="answer-button" type="button" id="game__answer-button">ANSWER</button>
+        <div class="result">
+          <div class="score" id="game__score__game">score: 0</div>
+          <div class="correct-answer" id="game__correct-answer">+1</div>
+          <div class="wrong-answer" id="game__wrong-answer">-1</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
