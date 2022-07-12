@@ -189,7 +189,7 @@ input:focus {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 0;
   padding-top: 20px;
 }
 
