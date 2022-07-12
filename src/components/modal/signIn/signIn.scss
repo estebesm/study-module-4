@@ -32,12 +32,17 @@
           padding: 20px;
           border-radius: 10px;
           font-size: 36px;
+          margin-bottom: 10px;
+          &:focus{
+            outline: 2px solid steelblue;
+            border: 1px solid steelblue;
+          }
           &.error{
-            border: 1px solid white;
-            outline: 2px solid white;
+            border: 1px solid red;
+            outline: 2px solid red;
             & +span:after{
               content: 'The username can only contain lowercase Latin letters (a-z) and numbers';
-              color: black;
+              color: red;
             }
           }
         }

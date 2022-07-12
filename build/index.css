@@ -28,6 +28,11 @@ button:hover {
   transition: .3s;
 }
 
+input:focus {
+  outline: 2px solid steelblue;
+  border: 1px solid steelblue;
+}
+
 .disabled {
   display: none !important;
 }
@@ -229,6 +234,7 @@ button:hover {
   font-size: 80px;
   color: white;
   font-weight: 700;
+  overflow-x: hidden;
 }
 
 .game .container .task.remove {
@@ -620,16 +626,22 @@ button:hover {
   padding: 20px;
   border-radius: 10px;
   font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.signIn.active .container .content input:focus {
+  outline: 2px solid steelblue;
+  border: 1px solid steelblue;
 }
 
 .signIn.active .container .content input.error {
-  border: 1px solid white;
-  outline: 2px solid white;
+  border: 1px solid red;
+  outline: 2px solid red;
 }
 
 .signIn.active .container .content input.error + span:after {
   content: 'The username can only contain lowercase Latin letters (a-z) and numbers';
-  color: black;
+  color: red;
 }
 
 .signIn.active .container .content .continue {

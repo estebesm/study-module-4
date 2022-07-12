@@ -24,7 +24,12 @@ button:hover{
   color: lightgray;
   transition: .3s;
 }
-
+input{
+  &:focus{
+    outline: 2px solid steelblue;
+    border: 1px solid steelblue;
+  }
+}
 .disabled{
   display: none!important;
 }
