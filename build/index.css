@@ -185,6 +185,98 @@ input:focus {
   }
 }
 
+.support {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding-top: 20px;
+}
+
+.support .support__button {
+  background-color: inherit;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 4px 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.support .support__content {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.support .support__content.active {
+  display: block;
+}
+
+.support .support__content .container {
+  min-height: 100vh;
+}
+
+.support .support__content .container .support__content__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 30px;
+  border-radius: 10px;
+  background-color: white;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.support .support__content .container .support__content__inner .support__close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.support .support__content .container .support__content__inner .support__close-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.support .support__content .container .support__content__inner .text {
+  color: black;
+}
+
+.support .support__content .container .support__content__inner .text h3 {
+  padding-bottom: 20px;
+}
+
+.support .support__content .container .support__content__inner .text p {
+  padding-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .support {
+    left: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .support .support__content .container {
+    padding: 0;
+    display: block;
+  }
+  .support .support__content .container .support__content__inner {
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    border-radius: 0;
+  }
+}
+
 .menu ul {
   display: flex;
   justify-content: center;
@@ -216,6 +308,7 @@ input:focus {
   display: none;
   background-color: black;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .game .container {
@@ -575,6 +668,15 @@ input:focus {
   margin-top: 20px;
   font-size: 32px;
   color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.auth button img {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
 }
 
 @media (max-width: 767px) {

@@ -28,12 +28,13 @@ var __webpack_exports__ = {};
 __webpack_require__.d(__webpack_exports__, {
   "Tl": () => (/* binding */ GAME_PAGE_ID),
   "kx": () => (/* binding */ MAIN_PAGE_ID),
-  "I3": () => (/* binding */ closePage),
   "lo": () => (/* binding */ currentPage),
   "Eb": () => (/* binding */ openAttackPage),
   "OX": () => (/* binding */ openMainPage),
   "Ve": () => (/* binding */ openPracticePage)
 });
+
+// UNUSED EXPORTS: closePage
 
 ;// CONCATENATED MODULE: ./src/functions/localStorage.js
 const isAuth = () => localStorage.getItem('username')
@@ -97,8 +98,14 @@ const practiceButton = document.getElementById('records__practice__button')
 const attackButton = document.getElementById('records__attack__button')
 
 const openRecords = (mode = 'attack') => {
-    if(mode === 'attack') attackButton.classList.add('selected')
-    if(mode === 'practice') practiceButton.classList.add('selected')
+    if(mode === 'attack') {
+        practiceButton.classList.remove('selected')
+        attackButton.classList.add('selected')
+    }
+    if(mode === 'practice') {
+        attackButton.classList.remove('selected')
+        practiceButton.classList.add('selected')
+    }
     recordsElement.classList.add('active')
     renderTable(mode)
 }
@@ -139,6 +146,35 @@ function renderTable(mode = 'attack'){
 function clearTable(){
     recordsTable.innerHTML = null
 }
+;// CONCATENATED MODULE: ./src/components/support/support.js
+
+
+const supportModals = document.querySelectorAll('.support__content')
+const openButtons = document.querySelectorAll('.support__button')
+const closeButtons = document.querySelectorAll('.support__close-button')
+
+const openSupportModal = (e) => {
+    e.stopPropagation()
+    document.body.style.overflow = 'hidden'
+    supportModals.forEach(elem => {
+        elem.classList.add('active')
+    })
+}
+
+const closeSupportModal = () => {
+    document.body.style.overflow = 'visible'
+    supportModals.forEach(elem => {
+        elem.classList.remove('active')
+    })
+}
+
+openButtons.forEach(button => {
+    button.addEventListener('click', e => openSupportModal(e))
+})
+
+closeButtons.forEach(button => {
+    button.addEventListener('click', closeSupportModal)
+})
 ;// CONCATENATED MODULE: ./src/components/menu/mainMenu/mainMenu.js
 
 
@@ -183,6 +219,7 @@ function enableMenu(menuId){
 
 
 ;// CONCATENATED MODULE: ./src/pages/main/main.js
+
 
 
 ;// CONCATENATED MODULE: ./src/functions/generateSimpleQuestion.js
@@ -328,12 +365,12 @@ resultWindow.addEventListener('keypress', e => {
 
 gameTryAgainButton.addEventListener('click', () => {
     closeResultWindow()
+    // closePage(GAME_PAGE_ID)
+    // if(mode === 'game') openPracticePage()
+    // if(mode === 'attack') openAttackPage()
     const question = getSimpleQuestion()
     setFirstQuestion(question)
     renderTask(question)
-    closePage(GAME_PAGE_ID)
-    if(mode === 'game') openPracticePage()
-    if(mode === 'attack') openAttackPage()
 })
 gameMenuButton.addEventListener('click', () => {
     closeResultWindow()
@@ -464,6 +501,10 @@ function getScore(){
 function answerToQuestion(){
     function createTask(){
         gameTask.classList.remove('remove')
+        practiceInput.value = ''
+        practiceInput.focus()
+        question = getSimpleQuestion()
+        renderTask(question)
         gameTask.classList.add('create')
         gameTask.removeEventListener('animationend', createTask)
     }
@@ -480,10 +521,6 @@ function answerToQuestion(){
     gameTask.classList.remove('create')
     gameTask.classList.add('remove')
     gameTask.addEventListener('animationend', createTask)
-    practiceInput.value = ''
-    practiceInput.focus()
-    question = getSimpleQuestion()
-    renderTask(question)
 }
 
 ;// CONCATENATED MODULE: ./src/components/modal/signIn/signIn.js
@@ -494,7 +531,7 @@ const signInWindows = document.querySelectorAll('.signIn')
 const signInContents = document.querySelectorAll('.sign-in__content')
 const signInInputs = document.querySelectorAll('.sign-in__input')
 const signInContinueButtons = document.querySelectorAll('.sign-in__continue-button')
-const closeButtons = document.querySelectorAll('.sign-in__close')
+const signIn_closeButtons = document.querySelectorAll('.sign-in__close')
 
 const openModal = () => {
     signInWindows.forEach(elem => elem.classList.add('active'))
@@ -520,7 +557,7 @@ function renderErrorInput() {
     })
 }
 
-closeButtons.forEach(elem => elem.addEventListener('click', closeModal))
+signIn_closeButtons.forEach(elem => elem.addEventListener('click', closeModal))
 
 signInWindows.forEach(elem => elem.addEventListener('click', () => {
     closeModal()
@@ -547,15 +584,19 @@ signInContinueButtons.forEach(elem => elem.addEventListener('click', () => {
 
 
 
+const authButtons = document.querySelectorAll('.auth__button')
+const authImages = document.querySelectorAll('.auth__image')
+const authTexts = document.querySelectorAll('.auth__text')
 
 const authBlockSignIn = (username) => {
     signIn(username)
-    authButtons.forEach(elem => {
+    authTexts.forEach(elem => {
         elem.textContent = getUsername()
     })
+    authImages.forEach(elem => {
+        elem.style.display = 'block'
+    })
 }
-
-const authButtons = document.querySelectorAll('.auth__button')
 
 authButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -571,13 +612,19 @@ authButtons.forEach(button => {
 
 function setAuthButtonContent(currentPage){
     if(currentPage === MAIN_PAGE_ID){
-        authButtons.forEach(elem => {
+        authTexts.forEach(elem => {
             elem.textContent = isAuth() ? getUsername() : 'login'
+        })
+        authImages.forEach(elem => {
+            elem.style.display = isAuth() ? 'block' : 'none'
         })
     }
     if(currentPage === GAME_PAGE_ID){
-        authButtons.forEach(elem => {
+        authTexts.forEach(elem => {
             elem.textContent = isAuth() ? getUsername() : ''
+        })
+        authImages.forEach(elem => {
+            elem.style.display = 'none'
         })
     }
 }
