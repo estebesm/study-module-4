@@ -46,12 +46,12 @@ resultWindow.addEventListener('keypress', e => {
 
 gameTryAgainButton.addEventListener('click', () => {
     closeResultWindow()
+    // closePage(GAME_PAGE_ID)
+    // if(mode === 'game') openPracticePage()
+    // if(mode === 'attack') openAttackPage()
     const question = getSimpleQuestion()
     setFirstQuestion(question)
     renderTask(question)
-    closePage(GAME_PAGE_ID)
-    if(mode === 'game') openPracticePage()
-    if(mode === 'attack') openAttackPage()
 })
 gameMenuButton.addEventListener('click', () => {
     closeResultWindow()

@@ -9,8 +9,14 @@ const practiceButton = document.getElementById('records__practice__button')
 const attackButton = document.getElementById('records__attack__button')
 
 export const openRecords = (mode = 'attack') => {
-    if(mode === 'attack') attackButton.classList.add('selected')
-    if(mode === 'practice') practiceButton.classList.add('selected')
+    if(mode === 'attack') {
+        practiceButton.classList.remove('selected')
+        attackButton.classList.add('selected')
+    }
+    if(mode === 'practice') {
+        attackButton.classList.remove('selected')
+        practiceButton.classList.add('selected')
+    }
     recordsElement.classList.add('active')
     renderTable(mode)
 }

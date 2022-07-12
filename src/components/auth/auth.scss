@@ -10,6 +10,14 @@
     margin-top: 20px;
     font-size: 32px;
     color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    img{
+      width: 32px;
+      height: 32px;
+      margin-left: 10px;
+    }
   }
 }
 

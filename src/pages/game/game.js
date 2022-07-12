@@ -109,6 +109,10 @@ export function getScore(){
 export function answerToQuestion(){
     function createTask(){
         gameTask.classList.remove('remove')
+        practiceInput.value = ''
+        practiceInput.focus()
+        question = getSimpleQuestion()
+        renderTask(question)
         gameTask.classList.add('create')
         gameTask.removeEventListener('animationend', createTask)
     }
@@ -125,8 +129,4 @@ export function answerToQuestion(){
     gameTask.classList.remove('create')
     gameTask.classList.add('remove')
     gameTask.addEventListener('animationend', createTask)
-    practiceInput.value = ''
-    practiceInput.focus()
-    question = getSimpleQuestion()
-    renderTask(question)
 }

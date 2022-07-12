@@ -2,15 +2,19 @@ import './auth.scss'
 import {openModal} from "../modal/signIn/signIn";
 import {getUsername, isAuth, signIn, signOut} from "../../functions/localStorage";
 import {currentPage, MAIN_PAGE_ID, GAME_PAGE_ID} from "../../entries/index";
+const authButtons = document.querySelectorAll('.auth__button')
+const authImages = document.querySelectorAll('.auth__image')
+const authTexts = document.querySelectorAll('.auth__text')
 
 export const authBlockSignIn = (username) => {
     signIn(username)
-    authButtons.forEach(elem => {
+    authTexts.forEach(elem => {
         elem.textContent = getUsername()
     })
+    authImages.forEach(elem => {
+        elem.style.display = 'block'
+    })
 }
-
-const authButtons = document.querySelectorAll('.auth__button')
 
 authButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -26,13 +30,19 @@ authButtons.forEach(button => {
 
 export function setAuthButtonContent(currentPage){
     if(currentPage === MAIN_PAGE_ID){
-        authButtons.forEach(elem => {
+        authTexts.forEach(elem => {
             elem.textContent = isAuth() ? getUsername() : 'login'
+        })
+        authImages.forEach(elem => {
+            elem.style.display = isAuth() ? 'block' : 'none'
         })
     }
     if(currentPage === GAME_PAGE_ID){
-        authButtons.forEach(elem => {
+        authTexts.forEach(elem => {
             elem.textContent = isAuth() ? getUsername() : ''
+        })
+        authImages.forEach(elem => {
+            elem.style.display = 'none'
         })
     }
 }
